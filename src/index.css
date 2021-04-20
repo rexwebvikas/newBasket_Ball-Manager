@@ -1,13 +1,48 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+  margin:0;
+  padding: 0;
+}
+#navbar{
+  display: flex;
+  background-color: grey;
+  margin-bottom: 40px;
+  font-size: larger;
+}
+.d1{
+  width: 130px;
+  text-align:center;
+  padding: 25px 10px;
+  margin-left: 30px;
+  color: white;
+  border-bottom: 2px solid blue;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.inputField{
+
+  width: 40%;
+  display: flex;
+  margin-left: 10px;
+ 
+
+
+}
+
+.selectValue{
+ 
+  width: 40%;
+  border:0px;
+ outline:0px;
+  margin-top: 50px;
+  border-bottom: 2px solid blue;
+  display: flex;
+  background-color: white;
+ 
+}
+
+#SubmitButton{
+   
+
+  margin-top: 80px;
+ 
+
 }
