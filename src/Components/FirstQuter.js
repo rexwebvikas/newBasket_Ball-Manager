@@ -1,369 +1,279 @@
-import React, { useState, useEffect } from 'react';
 
+import React ,{useState}from 'react';
+import Button from '@material-ui/core/Button';
 
-const FirstQuter = (props) => {
-    const [input1, setInput1] = useState(0);
-    const [input2, setInput2] = useState();
-    const [input3, setInput3] = useState();
-    const [input4, setInput4] = useState();
-    const [input5, setInput5] = useState();
-    const [verfie ,setVerifie] = useState([]);
-    console.log(verfie.position1,"verfie name")
-    console.log(verfie.name2,"verfie.name2")
-    // const [error, setError] = useState({});
-  //const [show1, setShow1] = useState(false);
+const FirstQuter =(props)=>{
 
+    const[input1 , setInput1] = useState(0)
+    const[input2 , setInput2] = useState(0)
+    const[input3 , setInput3] = useState(0)
+    const[input4 , setInput4] = useState(0)
+    const[input5 , setInput5] = useState(0)  
+    const [finalPlayer, setfinalPlayer] = useState({
+        name1: "", name2: "", name3: "", name4: "", name5: "", position1: "", position2: "", position3: "", position4: "", position5: ""
+    })
 
+    const handleChange =(e) =>{
 
+        const filter = props.PlayerData.findIndex((i)=>{return(e.target.value.includes(i.fname)&& e.target.value.includes(i.lname) && e.target.value.includes(i.id))})
+        console.log("filter",filter)
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        props.setPlayer({ ...props.Player, [name]: value })
+        setInput1(filter)
+        setfinalPlayer((datas)=>({...datas, [e.target.name]: e.target.value}))
+    
+    
+    }
 
-         const index = props.PlayerData.findIndex((value1) => { return (value.includes(value1.fname) && value.includes(value1.lname) && value.includes(value1.position)) })
+    const handleChange1 =(e) =>{
 
-        let arr = { ...props.Player }
-        let array = { ...verfie}
+        setfinalPlayer((datas)=>({...datas, [e.target.name]: e.target.value}))
 
-        if (name == "name1") {
+        const filter = props.PlayerData.findIndex((i)=>{return(e.target.value.includes(i.fname)&& e.target.value.includes(i.lname) && e.target.value.includes(i.id))})
+        console.log("filter",filter)
 
-            arr.name1 = value;
-            array.name1 = value;
-            arr.position1 ="defualt"
-            setVerifie(array)
-            props.setPlayer(arr)
-             setInput1(index)
-        }
-        if (name == "name2") {
-
-            arr.name2 = value;
-            array.name2 = value;
-            arr.position2 ="defualt"
-            setVerifie(array)
-            props.setPlayer(arr)
-             setInput2(index)
-        }
-
-        if (name == "name3") {
-
-            arr.name3 = value;
-            array.name3 = value;
-            arr.position3 ="defualt"
-            setVerifie(array)
-            props.setPlayer(arr)
-             setInput3(index)
-        }
-
-        if (name == "name4") {
-
-            arr.name4 = value;
-            array.name4 = value;
-            arr.position4 ="defualt"
-            setVerifie(array)
-            props.setPlayer(arr)
-             setInput4(index)
-        }
-
-        if (name == "name5") {
-
-            arr.name5 = value;
-            array.name5 = value;
-            arr.position5 ="defualt"
-            setVerifie(array)
-            props.setPlayer(arr)
-             setInput5(index)
-        }
-
+        setInput2(filter)
 
     }
 
+    const handleChange2 =(e) =>{
 
-
-    const handleChange1 = (e) => {
-        const { name, value } = e.target;
-        props.setPlayer({ ...props.Player, [name]: value });
-
-        let array = { ...verfie}
-
-
-        if (name == "position1") {
-            array.position1 = value;
-            setVerifie(array);
-        
-        };
-        if (name == "position2") {
-
-            array.position2 = value;
-            setVerifie(array);
-        };
-        if (name == "position3") {
-            array.position3 = value;
-            setVerifie(array);
-        };
-        if (name == "position4") {
-
-            array.position4 = value;
-            setVerifie(array);
-
-        }
-        if (name == "position5") {
-
-            array.position5 = value;
-            setVerifie(array)
-        }
+        setfinalPlayer((datas)=>({...datas, [e.target.name]: e.target.value}))
+        const filter = props.PlayerData.findIndex((i)=>{return(e.target.value.includes(i.fname)&& e.target.value.includes(i.lname) && e.target.value.includes(i.lname) && e.target.value.includes(i.id))})
+        console.log("filter",filter)
+        setInput3(filter)
     }
 
-    useEffect(() => {
-        let arr = {
-            name1: "",
-            name2: "",
-            name3: "",
-            name4: "",
-            name5: "",
-            position1: "defualt",
-            position2: "defualt",
-            position3: "defualt",
-            position4: "defualt",
-            position5: "defualt"
-        }
-        props.setPlayer(arr)
-        console.log(arr,"Player Data name")
-    }, [])
+    const handleChange3 =(e) =>{
+
+        setfinalPlayer((datas)=>({...datas, [e.target.name]: e.target.value}))
+        const filter = props.PlayerData.findIndex((i)=>{return(e.target.value.includes(i.fname)&& e.target.value.includes(i.lname)  && e.target.value.includes(i.lname) && e.target.value.includes(i.id))})
+        console.log("filter",filter)
+        setInput4(filter)
+    }
+
+    const handleChange4 =(e) =>{
+
+        setfinalPlayer((datas)=>({...datas, [e.target.name]: e.target.value}))
+        const filter = props.PlayerData.findIndex((i)=>{return(e.target.value.includes(i.fname)&& e.target.value.includes(i.lname) && e.target.value.includes(i.id))})
+        console.log("filter",filter)
+        setInput5(filter)
+    }
 
 
-    // let Select = props.PlayerData.map((value) => {
-    //     { return value.position }
-    // })
+      const HandleChangeSelect =(e)=>{
+
+        setfinalPlayer((datas)=>({...datas,[e.target.name]: e.target.value}))
+      }
+    let error1 = "", error2 ="",error3="",error4="",error5 ="",error6="",error7="",error8="",error9="",error10=""
+
+    let condition =""
+    condition = error1 || error2 || error3 || error4 || error5 
+
+    let condition1 =""
+    
+    condition1 = error6 || error7 || error8 || error9 || error10
 
 
+    if(finalPlayer.name1){
 
-    let condition = (props.Player.name1 && props.Player.name2 && props.Player.name2 == props.Player.name1 ||
-        props.Player.name3 && props.Player.name1 && props.Player.name3 == props.Player.name1 ||
-        props.Player.name1 && props.Player.name4 && props.Player.name4 == props.Player.name1 ||
-        props.Player.name1 && props.Player.name5 && props.Player.name5 == props.Player.name1 ||
-        props.Player.name3 && props.Player.name2 && props.Player.name3 == props.Player.name2 ||
-        props.Player.name4 && props.Player.name2 && props.Player.name4 == props.Player.name2 ||
-        props.Player.name3 && props.Player.name4 && props.Player.name4 == props.Player.name3 ||
-        props.Player.name4 && props.Player.name5 && props.Player.name4 == props.Player.name5 ||
-        props.Player.name5 && props.Player.name2 && props.Player.name5 == props.Player.name2 ||
-        props.Player.name3 && props.Player.name5 && props.Player.name5 == props.Player.name3)
+        error1 = finalPlayer.name1 == finalPlayer.name2 ||
+              finalPlayer.name1 == finalPlayer.name3 || 
+              finalPlayer.name1 == finalPlayer.name4 ||
+              finalPlayer.name1 == finalPlayer.name5
+    }
+    if(finalPlayer.name2){
 
+        error2 = finalPlayer.name2 == finalPlayer.name1 ||
+           finalPlayer.name2 == finalPlayer.name3 ||
+           finalPlayer.name2 == finalPlayer.name4 ||
+           finalPlayer.name2 == finalPlayer.name5
+    }
+    if(finalPlayer.name3){
 
-console.log("props.Player.position1 ",props.Player.position1)
+        error3 =finalPlayer.name3 == finalPlayer.name1 ||
+        finalPlayer.name3 == finalPlayer.name2 ||
+        finalPlayer.name3 == finalPlayer.name4 ||
+        finalPlayer.name == finalPlayer.name5
+    }
+    if(finalPlayer.name4){
 
+        error4 = finalPlayer.name4 == finalPlayer.name1 ||
+         finalPlayer.name4 == finalPlayer.name2 ||
+         finalPlayer.name4 == finalPlayer.name3 ||
+          finalPlayer.name4 == finalPlayer.name5
+    }
 
-    let condition1 = ((props.Player.position1 != "" && props.Player.position2 != "" && props.Player.position2 == props.Player.position1) ||
-    (props.Player.position3 != "" && props.Player.position1 != "" && props.Player.position3 == props.Player.position1) ||
-    (props.Player.position1 != "" && props.Player.position4 != "" && props.Player.position4 == props.Player.position1) ||
-    (props.Player.position1 != "" && props.Player.position5 != "" && props.Player.position5 == props.Player.position1) ||
-    (props.Player.position3 != "" && props.Player.position2 != "" && props.Player.position3 == props.Player.position2) ||
-    (props.Player.position4 != "" && props.Player.position2 != "" && props.Player.position4 == props.Player.position2) ||
-    (props.Player.position3 != "" && props.Player.position4 != "" && props.Player.position4 == props.Player.position3) ||
-    (props.Player.position4 != "" && props.Player.position5 != "" && props.Player.position4 == props.Player.position5) ||
-    (props.Player.position5 != "" && props.Player.position2 != "" && props.Player.position5 == props.Player.position2) ||
-    (props.Player.position3 != "" && props.Player.position5 != "" && props.Player.position5 == props.Player.position3))
+    if(finalPlayer.name5){
 
-    console.log("props.Player.position1 ",condition1)
+        error5 = finalPlayer.name5 == finalPlayer.name1 ||
+        finalPlayer.name5 == finalPlayer.name2 ||
+        finalPlayer.name5 == finalPlayer.name3 || 
+        finalPlayer.name5 == finalPlayer.name4 
+    }
 
+    if(finalPlayer.position1){
 
-    // let condition1 =((props.Player.position == props.Player.position1 && props.Player.position == props.Player.position2 && props.Player.position == props.Player.position3 && props.Player.position == props.Player.position4 && props.Player.position == props.Player.position5 ||
-    //     props.Player.position2 == props.Player.position && props.Player.position2 == props.Player.position3 && props.Player.position2 == props.Player.position4 && props.Player.position2 == props.Player.position5 ||
-    //     props.Player.position3 == props.Player.position && props.Player.position3  == props.Player.position2 && props.Player.position3 == props.Player.position4 && props.Player.position3 == props.Player.position5 ||
-    //     props.Player.position4 == props.Player.position && props.Player.position4 == props.Player.position2 && props.Player.position4 == props.Player.position3 && props.Player.position4 == props.Player.position5 ||
-    //     props.Player.position5 == props.Player.position && props.Player.position5 == props.Player.position2 && props.Player.position5 == props.Player.position3 && props.Player.position5 == props.Player.position4))
+        error6 = finalPlayer.position1 == finalPlayer.position2 ||
+        finalPlayer.position1 == finalPlayer.position3 ||
+        finalPlayer.position1 == finalPlayer.position4 ||
+        finalPlayer.position1  == finalPlayer.postion5
+    }
 
+    if(finalPlayer.position2){
 
-console.log(props.PlayerData,"playerdataaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        error7 = finalPlayer.position2 == finalPlayer.position1 ||
+        finalPlayer.position2 == finalPlayer.position3 ||
+        finalPlayer.position2 == finalPlayer.position4 ||
+        finalPlayer.position2  == finalPlayer.postion5
+    }
+    
+    if(finalPlayer.position3){
 
-    return (
+        error8 = finalPlayer.position3 == finalPlayer.position1 ||
+        finalPlayer.position3 == finalPlayer.position2 ||
+        finalPlayer.position3 == finalPlayer.position4 ||
+        finalPlayer.position3  == finalPlayer.postion5
+    }
+    if(finalPlayer.position4){
+
+        error9 = finalPlayer.position4 == finalPlayer.position1 ||
+        finalPlayer.position4 == finalPlayer.position2 ||
+        finalPlayer.position4 == finalPlayer.position3 ||
+        finalPlayer.position4  == finalPlayer.postion5
+    }
+    if(finalPlayer.position5){
+
+        error10 = finalPlayer.position5 == finalPlayer.position1 ||
+        finalPlayer.position5 == finalPlayer.position2 ||
+        finalPlayer.position5 == finalPlayer.position4 ||
+        finalPlayer.position5  == finalPlayer.postion3
+    }
+    return(
 
         <>
-            <form>
+            <div className="Form">
                 <div>
-                    <select 
-                        className ={((verfie.name1 && (verfie.name1 == verfie.name2 || verfie.name1 == verfie.name3 || verfie.name1 == verfie.name4 || verfie.name1 == verfie.name5))),"selectValue"}
-                        onChange={handleChange}
-                        label="name"
-                        name="name1"
-                        placeholder="Select Player">
-                        <option value="" disabled hidden selected>Select Player</option>
-                        {props.PlayerData.map((value) => { return  (
-
-                            
-                            <option value={`${value.fname}${value.lname} ${value.position}`} > {value.fname} {value.lname}</option>) })
-                            
-                            }
-
-                    </select>
-                    
-                    
                     <select
-                         className={((verfie.position1) && (verfie.position1 == verfie.position2 || verfie.position1 == verfie.position3 || verfie.position1 == verfie.position4 || verfie.position1 == verfie.position5)),"selectValue"}
-                       
-                        
-                        onChange={e => handleChange1(e)}
-                        label="position"
-                        name="position1"
-                        value={props.PlayerData.position1}
-                        placeholder="Select Position" >
-                        <option value="defualt" disabled hidden selected>Select Position</option>
+                   
+                    className ={error1 ? "selError" : "sel"}
+                     name="name1" 
+                     onChange={handleChange} >
+                    <option value="Select..." disabled hidden selected>Select...</option>
+                    {props.PlayerData.length > 0 ? props.PlayerData.map((i) => { return <option value={`${i.fname}${i.lname}${i.id}`}>{i.fname} {i.lname}</option> }) : null}
+                    </select>
+                    <select
+                     name="name2"
+                    className ={error2 ? "selError" : "sel"}
+                    onChange={handleChange1} 
+                       >
+                        <option value="Select..." disabled hidden selected>Select...</option>
+                        {props.PlayerData.length > 0 ? props.PlayerData.map((i) => { return <option value={`${i.fname}${i.lname}${i.id}`}>{i.fname} {i.lname}</option> }) : null}
+                    </select>
+                    <select
+                     name="name3"
+                    className ={error3 ? "selError" : "sel"}
+                        onChange={handleChange2}
+                         >
+                        <option value="Select..." disabled hidden selected>Select...</option>
+                        {props.PlayerData.length > 0 ? props.PlayerData.map((i) => { return <option value={`${i.fname}${i.lname}${i.id}`}>{i.fname} {i.lname}</option> }) : null}
+                    </select>
+                    <select
+                     name="name4" 
+                    className ={error4 ? "selError" : "sel"}
+                        onChange={handleChange3}
+                         >
+                        <option value="Select..." disabled hidden selected>Select...</option>
+                        {props.PlayerData.length > 0 ? props.PlayerData.map((i) => { return <option value={`${i.fname}${i.lname}${i.id}`}>{i.fname} {i.lname}</option> }) : null}
+                    </select>
+                    <select
+                     name="name5"
+                    className ={error5 ? "selError" : "sel"}
+                       onChange={handleChange4}
+                        >
+                        <option value="Select..." disabled hidden selected>Select...</option>
+                        {props.PlayerData.length > 0 ? props.PlayerData.map((i) => { return <option value={`${i.fname}${i.lname}${i.id}`}>{i.fname} {i.lname}</option> }) : null}
+                    </select>
 
-{/* {console.log('props.PlayerData.position',props.PlayerData[0].position)} */}
-                       { props.PlayerData && props.PlayerData[0].position.map((val) => {  return <option>{val.value}</option> } )} 
-                    {console.log(props.PlayerData[0].position,"Playerdtataaaa")}  
-
-                    {/* {props.playerData[0].position.map((val,index)=>{if(index == input1){return <option>{val.value}</option>}})} */}
+                    
  
-
-                    </select>
-
+                     { console.log(condition,"condition11111") && condition ? <p className="error">[**Player Already Selected]</p> : null} 
+                    {console.log("props.PlayerData", props.PlayerData)}
                 </div>
-                <div>
-                    <select
-                         className={((verfie.name2 && (verfie.name2 == verfie.name1 || verfie.name2 == verfie.name3 || verfie.name2 == verfie.name4 || verfie.name2 == verfie.name5))),"selectValue"}
-                           
-                        onChange={handleChange}
-                        label="name"
-                        name="name2"
-                        placeholder="Select Player">
-                        <option value="" disabled hidden selected>Select Player</option>
-                        {props.PlayerData.map((value) => { return (<option value={`${value.fname}${value.lname} ${value.position}`} > {value.fname} {value.lname}</option>) })}
-
-                    </select>
-                    <select
-                         className={(verfie.position2 && (verfie.position2 == verfie.position1 || verfie.position2 == verfie.position3 || verfie.position2 == verfie.position4 || verfie.position2 == verfie.position5)),"selectValue"}
-
-                        onChange={e => handleChange1(e)}
-                        label="position"
-                        name="position2"
-                        value={props.PlayerData.position2}
-                        placeholder="Select Position" >
-                        <option value="" disabled hidden selected>Select Position</option>
 
 
-                        {/* {props.PlayerData.map((value, index) => { if (index == input2) { return <option>{value.position2}</option> } })} */}
-                    
-                    
-                         { props.PlayerData && props.PlayerData[0].position.map((val) => {  return <option>{val.value}</option> } )}  
+                <div className="Position" style={{ borderLeft: "2px black solid", width: "50%", }}>
+                    <select 
+                     name="position1" 
+                    className ={error6 ? "selError" : "sel"}
+                        onChange={HandleChangeSelect}
                      
-
-                        {/* {props.playerData[0].position.map((val,index)=>{if(val == input2){return <option>{val.value}</option>}})} */}
+                         >
+                        <option  value={props.PlayerData.position1} selected disabled hidden>Select...</option>
+                        {props.PlayerData.length > 0 ? props.PlayerData[input1].position.map((i) => { return <option>{i.value}</option> }) : null}
+                   
+                    </select>
+                    <select
+                     name="position2" 
+                    className ={error7 ? "selError" : "sel"}
+                        onChange={HandleChangeSelect}
+                         >
+                        <option  value={props.PlayerData.position2} selected disabled hidden>Select...</option>
+                        {props.PlayerData.length > 0 ? props.PlayerData[input2].position.map((i) => { return <option>{i.value}</option> }) : null}
+                   
+                    </select>
+                    <select
+                     name="position3"
+                     className ={error8 ? "selError" : "sel"}
+                       onChange={HandleChangeSelect}
+                        >
+                        <option  value={props.PlayerData.position3}selected disabled hidden>Select...</option>
+                        {props.PlayerData.length > 0 ? props.PlayerData[input3].position.map((i) => { return <option>{i.value}</option> }) : null}
+                     
+                     </select>
+                    <select
+                     name="position4"
+                    className ={error9 ? "selError" : "sel"}
+                       onChange={HandleChangeSelect}
+                        >
+                        <option  value={props.PlayerData.position2} selected disabled hidden>Select...</option>
+                        {props.PlayerData.length > 0 ? props.PlayerData[input4].position.map((i) => { return <option>{i.value}</option> }) : null}
                     
                     </select>
+                    <select 
+                    name="position5"
+                    className ={error10 ? "selError" : "sel"}
+                      onChange={HandleChangeSelect}
+                       >
+                        <option  value={props.PlayerData.position1} selected disabled hidden>Select...</option>
+                        {props.PlayerData.length > 0 ? props.PlayerData[input5].position.map((i) => { return <option>{i.value}</option> }) : null}
+                   
+                    </select>
+                    {/* {condition1 && <p className="error">[**Multiple players can't can play at Same Position]</p>} */}
+
+
+                    <div className="p2error"> <div className="div1"> {condition && <p className="error">**Input feilds are same</p>}
+                </div>
+                    <div className="div2"> {
+                        condition1 && <p className="error">**Cannot Add Same Player for Multiple Position</p>} </div></div>
+
+
+
+
+
+
+
+
 
                 </div>
-                <div>
-                    <select
-                         className={((verfie.name3 && (verfie.name3 == verfie.name1 || verfie.name3 == verfie.name4 || verfie.name3 == verfie.name5 || verfie.name3 == verfie.name2))),"selectValue"}
-                       
-                        
-                        onChange={handleChange}
-                        label="name"
-                        name="name3"
-                        placeholder="Select Player">
-                        <option value="" disabled hidden selected>Select Player</option>
-                        {props.PlayerData.map((value) => { return (<option value={`${value.fname}${value.lname} ${value.position}`} > {value.fname} {value.lname}</option>) })}
+                
+            <div>
+                 <Button className="Next" variant="contained" color="primary">Save</Button>
+            </div>
+        </div>
 
-                    </select>
-                    <select
-                         className={(verfie.position3 && (verfie.position3 == verfie.position1 || verfie.position3 == verfie.position2 || verfie.position3 == verfie.position4 || verfie.position3 == verfie.position5)),"selectValue"}
-
-                        onChange={e => handleChange1(e)}
-                        label="position"
-                        name="position3"
-                        value={props.PlayerData.position3}
-                        placeholder="Select Position" >
-                        <option value="" disabled hidden selected>Select Position</option>
-
-                        {/* {props.PlayerData.map((value, index) => { if (index == input3) { return <option>{value.position3}</option> } })} */}
-                   
-                   
-                         { props.PlayerData && props.PlayerData[0].position.map((val) => {  return <option>{val.value}</option> } )}  
-                      
-
-                        {/* {props.playerData[0].position.map((val,index)=>{if(val == input3){return <option>{val.value}</option>}})} */}
-                    </select>
-
-                </div>
-                <div>
-                    <select
-                        
-                       
-                        className ={((verfie.name4 && (verfie.name4 == verfie.name1 || verfie.name4 == verfie.name2 || verfie.name4 == verfie.name3 || verfie.name4 == verfie.name5))),"selectValue"}
-                        onChange={handleChange}
-                        label="name"
-                        name="name4"
-                        placeholder="Select Player">
-                        <option value="" disabled hidden selected>Select Player</option>
-                        {props.PlayerData.map((value) => { return (<option value={`${value.fname}${value.lname}${value.position}`} > {value.fname} {value.lname}</option>) })}
-
-                    </select>
-                    <select
-                         className={(verfie.position4 && (verfie.position4 == verfie.position1 || verfie.position4 == verfie.position2 || verfie.position4 == verfie.position3 || verfie.position4 == verfie.position5)),"selectValue"}
-                         value={props.PlayerData.position4}
-                        onChange={e => handleChange1(e)}
-                        label="position"
-                        name="position4"
-
-                        placeholder="Select Position" >
-                        <option value="" disabled hidden selected>Select Position</option>
-
-
-                        {/* {props.PlayerData.map((value, index) => { if (index == input4) { return <option>{value.position4}</option> } })} */}
-                   
-                         { props.PlayerData && props.PlayerData[0].position.map((val) => {  return <option>{val.value}</option> } )}  
-                    
-                    
-                        {/* {props.playerData[0].position.map((val,index)=>{if(val == input4){return <option>{val.value}</option>}})} */}
-                    
-                    </select>
-
-                </div>
-                <div>
-                    <select
-                    
-                        
-                         className ={((verfie.name5 && (verfie.name5 == verfie.name1 || verfie.name5 == verfie.name2 || verfie.name5 == verfie.name3 || verfie.name5 == verfie.name4))),"selectValue"}
-                        onChange={handleChange}
-                        label="name"
-                        name="name5"
-                        placeholder="Select Player">
-                        <option value="" disabled hidden selected>Select Player</option>
-                        {props.PlayerData.map((value) => { return (<option value={`${value.fname}${value.lname} ${value.position}`} > {value.fname} {value.lname}</option>) })}
-
-                    </select>
-                    <select
-                         className={(verfie.position5 && (verfie.position5 == verfie.position1 || verfie.position5 == verfie.position2 || verfie.position5 == verfie.position3 || verfie.position5 == verfie.position4)),"selectValue"}
-                        onChange={e => handleChange1(e)}
-                        label="position"
-                        name="position5"
-                        value={props.PlayerData.position5}
-                        placeholder="Select Position" >
-                        <option value="default" disabled hidden selected>Select Position</option>
-
-
-                        {/* {props.PlayerData.map((value, index) => { if (index == input5) { return <option>{value.position5}</option> } })} */}
-                   
-                        { props.PlayerData && props.PlayerData[0].position.map((val) => {  return <option>{val.value}</option> } )}  
-                   
-                        {/* {props.playerData[0].position.map((val,index)=>{if(val == input5){return <option>{val.value}</option>}})}
-                    */}
-                    </select>
-
-                </div>
-                 <div className="p2error"> <div className="div1"> {condition && <p className="error" style={{color:"red"}}>**This User Already Exit</p>}
-                </div>
-                     <div className="div2"> {
-                        condition1 && <p className="error" style={{color:"red"}}>**Cannot Add Same Player for Multiple Position</p>} </div>  
-                        </div>
-
-                {/* {error.name && <p className="error">{error.name}</p>} */}
-                {/* {(show1 && !condition3 && !condition && !condition2) && <p className="submit ">Players has been selected for First Quarter</p>}
-                {(show1 && condition3) && <p className="error ">**Must have to select 5 player for the First Quarter</p>}  */}
-
-            </form>
         </>
     )
-
 }
-export default FirstQuter;
+
+
+export default FirstQuter 

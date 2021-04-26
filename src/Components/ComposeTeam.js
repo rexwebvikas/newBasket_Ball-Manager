@@ -1,13 +1,13 @@
-import React from 'react';
+import React,{useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Select from 'react-select';
-import { requirePropFactory } from '@material-ui/core';
-
-
-
 
 const ComposeTeam = (props) => {
+
+  // const [err,setErr] = useState(false)
+  // const regexp = /^[0-9\b]+$/
+  // const text = /^(?:[A-Za-z]+|\d+)$/
 
   const options =[
     {value: "Point_Guard" , label:"Point_Guard"},
@@ -22,34 +22,38 @@ const ComposeTeam = (props) => {
   const handleChange = (e) => {
 
     const { name, value } = e.target;
-
-    props.setData({ ...props.data, [name]: value })
-    console.log("data", props.data)
-    // errorShow();
-
-
-
+    var letters = /^[A-Za-z]+$/;
+    if(value==="" || value.match(letters)){
+    props.setData({ ...props.data, [name]: value});}
+  
   }
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // errorShow();
-
-
+    e.preventDefault();    
   }
   const Click = () => {
-
     if (props.data.fname != "" && props.data.lanme != "" && props.data.height != "" && props.data.position != "") {
-
-      props.PlayerData.push(props.data)
-      let obj = { fname: "", lname: "", height: "", position: "" };
-      props.setData(obj)
-
+      errorShow();
+      if(props.data.height>=162 && props.data.height<=300)
+      {
+        props.PlayerData.push(props.data)
+        let obj = { fname: "", lname: "", height: "", position: "" };
+        props.setData(obj)
+      }
+      else{
+      errorShow();
+      }
     }
-    errorShow();
+    else
+    {
+      
+    }
+ 
     console.log("playerData", props.PlayerData)
 
 
   }
+ 
   const errorShow = () => {
 
     let errors = {};
@@ -60,17 +64,18 @@ const ComposeTeam = (props) => {
     if (!props.data.lname) {
       errors.lname = "Enetr Last Name"
     }
-    if (!props.data.height) {
+    if (props.data.height==="") {
       errors.height = "Enter The height"
     }
+    if (props.data.height != "" && (props.data.height < 162 || props.data.height > 304)) {
+      errors.height = "Height Should be Between 162cms to 304cms"
+  }
     if (!props.data.position) {
       errors.position = "Enetr the Position"
     }
+       
     return (props.setErrors(errors))
-
-
   }
-
 
   const handleSelect =(e)=>{
 
@@ -78,11 +83,16 @@ const ComposeTeam = (props) => {
          console.log(e)
          data.position= e
          props.setData(data)
-
   }
 
+  function hnadleHeight(e){
+    var numbers = /^[-+]?[0-9]+$/;
+    const { name, value } = e.target;
+    if(value =="" || value.match(numbers)){
+    props.setData({ ...props.data, [name]: value });}
+    console.log(props.data, "dataaaaaa")
+  }
   return (
-
     <>
       <div className="form">
         <form className="form" onSubmit={handleSubmit}>
@@ -111,27 +121,14 @@ const ComposeTeam = (props) => {
             type="text"
             name="height"
             className="inputField"
-            value={props.data.height}
-            onChange={handleChange}
-          />
-          {props.errors.height && <p style={{color:"red"}}>{props.errors.height}</p>}
-          <br></br>
-          {/* <select
+            InputProps={{ inputProps: { min: 152, max: 305 } }}
+            placeholder="Enter Height (in cms)"
 
-            className="selectValue"
-            value={props.data.position}
-            name="position"
-            onChange={handleChange}
-            placeholder="Select-Position"
-          >
-            <option value="default" disabled select hidden>Select-Position</option>
-            <option value="Point_Guard">Point Guard</option>
-            <option value="Shooting_Gurad">Shooting Guard</option>
-            <option value="Small_Guard">Small Guard</option>
-            <option value="Power_Forward">Power Forward</option>
-            <option value="The_Center">The Center</option>
-          </select> */}
-            
+            value={props.data.height}
+            onChange={hnadleHeight}
+          />
+          {props.errors.height && <p className="error" style={{color:"red"}}>{props.errors.height}</p>}
+          <br></br> 
             <Select
              className="selectBox"
               options ={options}
@@ -143,18 +140,13 @@ const ComposeTeam = (props) => {
             />
 
           {props.errors.position && <p style= {{color:"red"}}>{props.errors.position}</p>}
+          {props.PlayerData.length > 0 && <lable className="cong" style={{color:"green"}}>!Congrats {props.PlayerData.length} Playes has been added</lable>}
 
-
-
-          <Button type="submit" onClick={() => Click()} variant="contained" color="primary" id="SubmitButton">
+           <Button type="submit" onClick={() => Click()} variant="contained" color="primary" id="SubmitButton">
             Save
-    </Button>
-
+    </Button> 
         </form>
-
-
       </div>
-
     </>
   )
 
